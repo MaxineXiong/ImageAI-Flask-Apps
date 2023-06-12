@@ -1,4 +1,4 @@
-# ImageAI-Web-Apps
+# ImageAI Computer Vision Flask Apps
 
 [![GitHub](https://badgen.net/badge/icon/GitHub?icon=github&color=black&label)](https://github.com/MaxineXiong)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
