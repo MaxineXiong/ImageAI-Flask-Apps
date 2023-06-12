@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Object Recognition</title>
+    <link rel="stylesheet" type="text/css" href="./static/main.css">
+    <link rel="icon" href="./static/web-icon.ico" type="image/x-icon">
+</head>
+<body>
+    <h1><a href="./">IMAGEAI COMPUTER VISION WEB SERVICE</a></h1>
+    <div class="container">
+      <h2 style='text-align:center;margin-top:-10px'>Welcome to the Image Object Recognition Web Application!</h2><br>
+      <p>
+          Upload your images and let <a href="https://github.com/OlafenwaMoses/ImageAI" target="_blank"><strong>ImageAI</strong></a>'s
+          advanced image recognition model analyze and predict the objects present in the images.
+          Simply click the "Choose Files" button to select one or multiple image files (in JPG, JPEG, or PNG format) and choose a
+          <a href="https://github.com/OlafenwaMoses/ImageAI/tree/master/imageai/Classification" target="_blank"><strong>predictive
+          algorithm developed by ImageAI</strong></a>, and then click the "Predict" button to initiate the analysis. The model will provide
+          accurate predictions along with their corresponding probabilities. Start exploring the power of image recognition now and have fun!
+      </p>
+        <form action="./image-prediction.html" method="POST" enctype="multipart/form-data">
+          <label for="images">Upload Images:</label>
+          <input type="file" name="images" id="images" accept=".jpg, .jpeg, .png" multiple required>
+          <br>
+          <label for="algorithm">Select an ImageAI's Predictive Algorithm:</label>
+          <select name="algorithm" id="algorithm">
+            <option value="MobileNetV2">MobileNetV2 (fastest prediction time and moderate accuracy)</option>
+            <option value="ResNet50">ResNet50 (fast prediction time and high accuracy)</option>
+            <option value="InceptionV3">InceptionV3 (slow prediction time and higher accuracy)</option>
+            <option value="DenseNet121">DenseNet121 (slower prediction time and highest accuracy)</option>
+          </select>
+          <br>
+          <button type="submit" class='image-button'>Predict</button>
+        </form>
+    </div>
+
+
+    {% if predictions %}
+    <div class="results">
+      <h2>{{ 'Image Prediction Results By ' + algo }}</h2>
+      {% for prediction in predictions %}
+      <div class="image-predictions">
+        <div class="original-image">
+          <img src="./static/files/{{ prediction['image'] }}" alt='{{ prediction['image'] }}' height='300' >
+        </div>
+        <h3>{{ 'The object in "' + prediction['image'] + '" is likely to be:' }}</h3>
+        <table>
+            <tr>
+                <th class="table-cell">Predictions</th>
+                <th class="table-cell">Probability</th>
+            </tr>
+            {% for pred in prediction['predictions'] %}
+            <tr>
+                <td>{{ pred['label'] }}</td>
+                <td>{{ pred['probability'] }}%</td>
+            </tr>
+            {% endfor %}
+        </table>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./static/main.css">
+    <link rel="icon" href="./static/images/web-icon.ico" type="image/x-icon">
+    <title>Video Object Detection</title>
+</head>
+
+<body>
+    <h1><a href="./">IMAGEAI COMPUTER VISION WEB SERVICE</a></h1>
+    <div class="container">
+        <h2 style='text-align:center;margin-top:-10px'>Welcome to the Video Object Detection Web Application!</h2><br>
+        <p>Upload your videos and let our advanced object detection models analyze and identify objects present in the frames. With just a few clicks,
+        you can gain valuable insights from your videos. Simply select a video file (in MP4 or MOV format) and choose from our selection of powerful
+        object detection models including TinyYOLOv3, YOLOv3, and RetinaNet,
+        which were developed by <a href="https://github.com/OlafenwaMoses/ImageAI/blob/master/imageai/Detection/VIDEO.md" target="_blank"><strong>ImageAI</strong></a>.
+        Once you submit the video, our models will process the frames and identify objects with high accuracy. You can then explore the results,
+        download the annotated output video with highlighted objects, and access the corresponding CSV data for further analysis.
+        With <a href="https://github.com/OlafenwaMoses/ImageAI" target="_blank"><strong>ImageAI</strong></a>'s intuitive interface and
+        cutting-edge object detection algorithms, you can unlock the potential of video analysis and uncover valuable information
+        hidden within your videos.<br>
+        <br>Upload your video now and embark on an exciting journey of visual intelligence and object recognition!
+        </p>
+
+        <form action="./video-object-detection.html" method="POST" enctype="multipart/form-data">
+            <label for="video">Upload a Video:</label>
+            <input type="file" id="video" name="video" accept="video/*" required>
+            <br>
+            <label for="model">Select an ImageAI's Object Detection Model:</label>
+            <select id="model" name="model">
+              <option value="TinyYOLOv3">TinyYOLOv3 (optimized for speed and moderate performance, with fast detection time)</option>
+              <option value="YOLOv3">YOLOv3 (moderate performance and accuracy, with a moderate detection time)</option>
+              <option value="RetinaNet">RetinaNet (high performance and accuracy, with longer detection time)</option>
+            </select>
+            <br>
+            <button type="submit" class='video-button'
+                    title="It may take a few minutes to process your video. Please wait patiently for the results to be generated.">
+              Detect and Analyze
+            </button>
+        </form>
+        <br>
+    </div>
+
+    {% if video_name %}
+    <div class="results-video">
+      <h2>Output video: '{{ video_name }}' with detected objects highlighted</h2>
+      <br>
+      <a href="./static/files/{{ output_video_name }}" download><strong>Click to download the output video</strong></a>
+      <br>
+      <img src="./static/files/{{ output_video_gif }}" alt="Summary Plot" width="800">
+      <br>
+      <a href="./static/files/{{ csv_file_name }}" download><strong>Click to download CSV data</strong></a>
+      <br>
+      <img src="./static/files/summary_plot.png" alt="Summary Plot" width="800">
+    </div>
+    {% endif %}
+
+
+</body>
+
+</html>

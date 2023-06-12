@@ -1,0 +1,318 @@
+body {
+    background-color: #1e2b3a;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+.author a,
+h1 a {
+    text-decoration: none;
+    color: white;
+}
+
+h1 a:hover {
+    color: #44CAEE;
+}
+
+.author a:hover {
+    color: #44CAEE;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.25);
+    padding: 50px 20px 50px 20px;
+    border-radius: 5px;
+    width: 75%;
+    margin: 40px auto 0 auto;
+}
+
+.container p,
+.container pre {
+    margin-bottom: 50px;
+    margin-top: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
+    text-align: center;
+    font-size: 18px;
+    color: #e0e1e1;
+    line-height: 1.5;
+}
+
+.container p a {
+    color: white;
+}
+
+.container pre {
+    white-space: pre-wrap;
+    margin-bottom: 0;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    margin-top: 60px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form label {
+    display: inline-block;
+    width: 35%;
+    text-align: left;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+form input[type="file"] {
+    width: 35%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+select {
+  width: 35%;
+  padding: 10px;
+  margin-bottom: 40px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+button.image-button {
+    width: 20%;
+    height: 60px;
+    background-color: #5865F2;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.image-button:hover {
+    border-color: #5865F2;
+    box-shadow: 0 0 30px 0 rgba(88, 101, 242, 0.8), 0 0 30px 0 rgba(88, 101, 242, 0.4);
+}
+
+button.video-button {
+    width: 20%;
+    height: 60px;
+    background-color: #9858f2;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.video-button:hover {
+    border-color: #9858f2;
+    box-shadow: 0 0 30px 0 rgba(152, 88, 242, 0.8), 0 0 30px 0 rgba(152, 88, 242, 0.4);
+}
+
+.results {
+    margin-top: 80px;
+    margin-bottom: 100px;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.results h2 {
+    margin-bottom: 40px;
+}
+
+.results a {
+    font-size: 18px;
+    color: white;
+}
+
+.results-video {
+    margin-top: 80px;
+    margin-bottom: 100px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.results-video h2 {
+    margin-bottom: 40px;
+}
+
+.results-video a {
+    font-size: 18px;
+    color: white;
+}
+
+.results-video img {
+    margin-top: 30px;
+    margin-bottom: 100px;
+}
+
+.image-predictions {
+    margin: 20px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.image-predictions + .image-predictions {
+    margin-top: 50px;
+}
+
+.image-predictions h3 {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+table {
+    border-collapse: separate; /* Add separate border-collapse */
+    border-spacing: 0; /* Set border-spacing to 0 */
+    width: 100%;
+    margin-top: 10px;
+}
+
+.table-cell {
+    width: 50%; /* Adjust the width as desired */
+}
+
+th.table-cell,
+td.table-cell {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid rgba(209, 209, 209, 0.5);
+    word-wrap: break-word; /* Enable word wrapping for longer text */
+    white-space: normal; /* Allow text to wrap within table cells */
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid rgba(209, 209, 209, 0.5);
+}
+
+tr:last-child td {
+    border-bottom: none; /* Remove border-bottom for the last row */
+}
+
+tr:nth-child(even) {
+    background-color: transparent;
+}
+
+th {
+    font-size: 13px; /* Adjust the font size of the table headers */
+}
+
+td {
+    font-size: 17px; /* Adjust the font size of the table column values */
+}
+
+.original-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.original-image img {
+    max-width: 100%;
+    max-height: 200px;
+}
+
+.image-app,
+.video-app {
+    background-color: rgba(255, 255, 255, 0.25);
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.image-app h3,
+.video-app h3 {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.image-app p,
+.video-app p {
+    margin-bottom: 20px;
+    text-align: justify;
+    font-size: 16px;
+    color: #e0e1e1;
+    line-height: 1.5;
+}
+
+.image-app a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #5865F2;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 18px;
+}
+
+.video-app a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #9858f2;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 18px;
+}
+
+.image-app a:hover {
+    background-color: #4853c4;
+}
+
+.video-app a:hover {
+    background-color: #893ff0;
+}
+
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 250px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Show tooltip text when hovering over the button */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
