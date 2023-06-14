@@ -79,7 +79,7 @@ The description of each file and folder in the repository is as follows:
     
     **Note:** The **models/** folder is intentionally left empty in the GitHub repository due to the large size of the models. Users are required to manually download and place the models into the corresponding subfolders as described in the README files.
     
-- **files_for_testing/**: This folder contains a collection test images and videos that can be used for app testing and experimentation.
+- **files_for_testing/**: This folder contains a collection of test images and videos that can be used for app testing and experimentation.
 - **requirements.txt**: This file lists the necessary dependencies and packages required to run the Flask apps. It provides a convenient way to install all the dependencies.
 - **README.md**: The README file for the project. It provides an overview of the project, installation instructions, usage guidelines, and other relevant information.
 - **LICENSE**: The license file for the project, which specifies the terms and conditions under which the code and resources are shared.
