@@ -16,11 +16,11 @@ It checks if the folder exists, and if not, creates it.
 It also deletes any existing files inside the folder.
 Returns the path to the folder.
 """
-    # Checks if the folder exists, and if not, creates it.
+    # Create the './static/files/' folder if it doesn't exist
     if not os.path.exists('./static/files/'):
         os.mkdir('./static/files')
 
-    # Path to the file folder
+    # Path to the `files` folder
     path = os.path.join(os.path.join(os.getcwd(), 'static'), 'files')
     # Get the list of the names of the files inside the folder
     files = os.listdir(path)
@@ -30,6 +30,7 @@ Returns the path to the folder.
         for file in files:
             os.remove(os.path.join(path, file))
 
+    # Return the path to the `files` folder
     return path
 
 
@@ -83,6 +84,7 @@ Finally, it renders the image-prediction.html template with the predictions and 
                                     predictions = predictions,
                                     algo = selected_algo)
 
+    # Render the image-prediction.html template if the request method is GET
     return render_template('image-prediction.html')
 
 
@@ -112,6 +114,7 @@ Finally, it renders the video-object-detection.html template with the video file
             selected_model = request.form['model']
             # Path to the video object detection models
             execution_path = os.path.join(os.path.join(os.getcwd(), 'models'), 'video-object-detection-models')
+            # Set the frames per second for video processing
             frames_per_second = 20
 
             # Create an instance of VideoObjectDetector
@@ -121,24 +124,29 @@ Finally, it renders the video-object-detection.html template with the video file
             # Plot summary bar charts
             object_detector.plot_summaries()
 
+            # Generate a GIF image of the output video
             output_vido_clip = VideoFileClip(os.path.join(videos_path, input_video_name.split('.')[0] + "_detected." + input_video_name.split('.')[-1]))
             output_vido_clip.write_gif(os.path.join(videos_path, input_video_name.split('.')[0] + "_detected.gif"))
 
+            # Check if the summary bar chart 'Average Number of Unique Objects Per Second' exists and assign its path, otherwise assign None
             if os.path.exists(os.path.join(videos_path, 'summary_plot_second.png')):
                 second_plot =  'summary_plot_second.png'
             else:
                 second_plot = None
 
+            # Check if the summary bar chart 'Average Number of Unique Objects Per Minute' exists and assign its path, otherwise assign None
             if os.path.exists(os.path.join(videos_path, 'summary_plot_minute.png')):
                 minute_plot =  'summary_plot_minute.png'
             else:
                 minute_plot = None
 
+            # Check if the summary bar chart 'Average Number of Unique Objects Per Hour' exists and assign its path, otherwise assign None
             if os.path.exists(os.path.join(videos_path, 'summary_plot_hour.png')):
                 hour_plot =  'summary_plot_hour.png'
             else:
                 hour_plot = None
 
+            # Renders the video-object-detection.html template with the video details and CSV file name
             return render_template('video-object-detection.html',
                                     video_name = input_video_name,
                                     output_video_name = input_video_name.split('.')[0] + "_detected." + input_video_name.split('.')[-1],
@@ -148,11 +156,12 @@ Finally, it renders the video-object-detection.html template with the video file
                                     minute_plot = minute_plot,
                                     hour_plot = hour_plot)
 
+    # Renders the video-object-detection.html template if the request method is GET
     return render_template('video-object-detection.html')
 
 
 
 
-
+# Run the Flask app in debug mode if the script is executed directly
 if __name__ == '__main__':
     app.run(debug=True)
