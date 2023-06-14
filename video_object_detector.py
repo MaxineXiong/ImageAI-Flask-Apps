@@ -67,24 +67,32 @@ class VideoObjectDetector:
         return csv_path
 
 
-    def plot_summary_graph(self):
-        # Calculate the number of unique objects in each frame
-        df_count = self.df.groupby(['frames', 'objects']).count()
-        df_count.reset_index(drop = False, inplace = True)
-        df_count.rename(columns = {'probability': 'uniqueCounts'}, inplace = True)
-        # Calculate the average number of unique objects per frame
-        df_count_avg = df_count[['objects', 'uniqueCounts']].groupby('objects').mean().rename(columns = {'uniqueCounts': 'uniqueCountsPerFrame'})
-        df_count_avg.sort_values('uniqueCountsPerFrame', ascending = False, inplace = True)
-        df_count_avg.reset_index(drop = False, inplace =True)
+    def plot_summary_graph(self, by_interval):
+        # Calculate the number of unique objects in each frame/second/minute/hour
+        if by_interval != 'full':
+            df_count = self.df.groupby([by_interval.lower() + 's', 'objects']).count()
+            df_count.reset_index(drop = False, inplace = True)
+            df_count.rename(columns = {'probability': 'uniqueCounts'}, inplace = True)
+            # Calculate the average number of unique objects per frame/second/minute/hour
+            count_col = 'uniqueCountsPer' + by_interval.title()
+            df_count = df_count[['objects', 'uniqueCounts']].groupby('objects').mean().rename(columns = {'uniqueCounts': count_col})
+            chart_title = 'Average Number of Unique Objects Per ' + by_interval.title()
+        else:
+            count_col = 'counts'
+            df_count = self.df[['objects', 'probability']].groupby('objects').count().rename(columns = {'probability': count_col})
+            chart_title = 'Total Number of Unique Objects In This Video'
+
+        df_count.sort_values(count_col, ascending = False, inplace = True)
+        df_count.reset_index(drop = False, inplace =True)
 
         fig, ax = plt.subplots()
-        df_count_avg.plot.bar(x = 'objects', y = 'uniqueCountsPerFrame',
-                              color = '#7289DA', rot = 0, ax = ax)
+        df_count.plot.bar(x = 'objects', y = count_col,
+                          color = '#7289DA', rot = 0, ax = ax)
 
         # Hide x axis title
         ax.set(xlabel = None)
         # Reset the range of y axis
-        ax.set_ylim(0, max(list(df_count_avg['uniqueCountsPerFrame'])) * 1.3)
+        ax.set_ylim(0, max(list(df_count[count_col])) * 1.3)
         # Hide y axis
         ax.axes.get_yaxis().set_visible(False)
         # Format x ticks
@@ -97,13 +105,42 @@ class VideoObjectDetector:
         ax.spines['right'].set_color('#1e2b3a')
         ax.spines['top'].set_color('#1e2b3a')
         # Add graph title
-        plt.title('Average Number of Unique Objects Per Frame',
+        plt.title(chart_title,
                   fontname = 'arial', fontsize = 14, color = 'white')
         # Add value labels to the bars
         self.add_value_labels(ax)
 
         # Save the bar graph as a PNG image with a transparent background
-        fig.savefig(os.path.join(self.videos_path, 'summary_plot.png'), transparent = True)
+        fig.savefig(os.path.join(self.videos_path, 'summary_plot_{}.png'.format(by_interval.lower())), transparent = True)
+
+
+    def plot_summary_by_second(self):
+        self.df['seconds'] = self.df['frames'].str.split(':').str[-1].str.split('.').str[0]
+        self.df['seconds'] = self.df['seconds'].astype('int32')
+        if max(list(self.df['seconds'])) > 0:
+            self.plot_summary_graph('second')
+
+
+    def plot_summary_by_minute(self):
+        self.df['minutes'] = self.df['frames'].str.split(':').str[1]
+        self.df['minutes'] = self.df['minutes'].astype('int32')
+        if max(list(self.df['minutes'])) > 0:
+            self.plot_summary_graph('minute')
+
+
+    def plot_summary_by_hour(self):
+        self.df['hours'] = self.df['frames'].str.split(':').str[0]
+        self.df['hours'] = self.df['hours'].astype('int32')
+        if max(list(self.df['hours'])) > 0:
+            self.plot_summary_graph('hour')
+
+
+    def plot_summaries(self):
+        self.plot_summary_graph('frame')
+        self.plot_summary_by_second()
+        self.plot_summary_by_minute()
+        self.plot_summary_by_hour()
+        self.plot_summary_graph('full')
 
 
     def add_value_labels(self, ax, spacing = 5):

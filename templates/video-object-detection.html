@@ -54,7 +54,17 @@
       <br>
       <a href="./static/files/{{ csv_file_name }}" download><strong>Click to download CSV data</strong></a>
       <br>
-      <img src="./static/files/summary_plot.png" alt="Summary Plot" width="800">
+      <img src="./static/files/summary_plot_frame.png" alt="Summary Plot By Frame" width="800">
+      {% if second_plot %}
+        <img src="./static/files/{{ second_plot }}" alt="Summary Plot By Second" width="800">
+      {% endif %}
+      {% if minute_plot %}
+        <img src="./static/files/{{ minute_plot }}" alt="Summary Plot By Minute" width="800">
+      {% endif %}
+      {% if hour_plot %}
+        <img src="./static/files/{{ hour_plot }}" alt="Summary Plot By Hour" width="800">
+      {% endif %}
+      <img src="./static/files/summary_plot_full.png" alt="Summary Plot Full" width="800">
     </div>
     {% endif %}
 
