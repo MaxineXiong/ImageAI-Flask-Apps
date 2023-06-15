@@ -10,7 +10,7 @@
 
 ## Project Description
 
-This project consists of two Flask applications that utilize **ImageAI's** [**image prediction algorithms**](https://github.com/OlafenwaMoses/ImageAI/tree/master/imageai/Classification) and [**object detection models**](https://github.com/OlafenwaMoses/ImageAI/blob/master/imageai/Detection/VIDEO.md) to perform object recognition and analysis in images and videos. The first application, **Image Object Recognition Flask Application**, allows users to upload images and receive predictions about the objects present in them. The second application, **Video Object Detection Flask Application**, performs object detection in videos, generating frame-level data of detected objects and providing data analysis for the object detections.
+This project consists of two Flask applications that utilize **ImageAI's** [**image prediction algorithms**](https://github.com/OlafenwaMoses/ImageAI/tree/master/imageai/Classification) and [**object detection models**](https://github.com/OlafenwaMoses/ImageAI/blob/master/imageai/Detection/VIDEO.md) to perform object recognition and analysis in images and videos. The first application, **Image Object Recognition Flask Application**, allows users to upload images and obtain accurate predictions about the objects contained within, along with confidence scores. The second application, **Video Object Detection Flask Application**, performs the detection of objects in videos, generating frame-level data of the detected objects and providing insights through data analysis. These user-friendly apps offer an accessible and intuitive platform for leveraging advanced computer vision capabilities, empowering users to explore, analyze, and extract meaningful information from visual content with ease.
 
 <br/>
 
