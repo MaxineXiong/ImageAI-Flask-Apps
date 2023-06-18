@@ -20,14 +20,15 @@ This project consists of two Flask applications that utilize **ImageAI's** [**im
     - Upload and predict objects in images.
     - Display predicted objects with confidence scores.
 - **App 2 - Video Object Detection Flask Application**:
-    - Upload and detect objects in videos.
-    - Generate a raw dataset of detected objects at the frame level in CSV format.
+    - Upload and detect objects in a video.
+    - Generate a raw dataset of detected objects at the frame level in CSV format (downloadable).
+    - Generate an output video with detected objects highlighted with rectangles (downloadable).
     - Perform data analysis to provide insights on detected objects in the video, including:
         - *Average number of unique objects per frame*.
-        - *Average number of unique objects per second*.
-        - *Average number of unique objects per minute*.
-        - *Average number of unique objects per hour.*
-        - *Total number of unique objects in the entire video.*
+        - *Average number of unique objects per second* (conditions applies).
+        - *Average number of unique objects per minute* (conditions applies).
+        - *Average number of unique objects per hour* (conditions applies).
+        - *Total number of unique objects in the entire video*.
 
 <br/>
 
@@ -117,7 +118,7 @@ To use the **ImageAI Computer Vision Flask Apps**, please follow these steps:
           <br><i>This GIF demonstrates the process of uploading an image, predicting objects in the image, and displaying the predicted objects with confidence scores.</i>
         </p>
         
-    - In the **Video Object Detection Flask Application**, you can upload videos and detect objects in them. The app will generate raw frame-level object data in CSV format that you can download. Additionally, it performs data analysis to provide insights on the detected objects in the video, such as the *average number of unique objects per frame*, *per second*, *per minute, per hour*, and *the total number of unique objects in the entire video*.
+    - In the **Video Object Detection Flask Application**, you can upload a video and detect objects in it. The app will generate raw frame-level object data in CSV format that can be downloaded, along with an output video where detected objects are highlighted with rectangles. Additionally, it performs data analysis to provide insights on the detected objects in the video, such as the *average number of unique objects per frame*, *per second*, *per minute, per hour*, and *the total number of unique objects in the entire video* depending on the length of the video.
         
         <p align='center'>
           <img src="./static/images/demo-video-object-detector.gif">
