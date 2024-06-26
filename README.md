@@ -5,6 +5,7 @@
 [![Made with Python](https://img.shields.io/badge/Python->=3.6-blue?logo=python&logoColor=white)](https://www.python.org)
 [![ImageAI](https://img.shields.io/badge/ImageAI-5C3EE8?logo=OpenCV)](https://github.com/OlafenwaMoses/ImageAI)
 [![pandas](https://img.shields.io/badge/pandas-150458?logo=pandas&logoColor=white)](https://pandas.pydata.org/)
+[![Flask](https://img.shields.io/badge/Flask-323232?logo=Flask&logoColor=white)](https://flask.palletsprojects.com/)
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://html.spec.whatwg.org/)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](https://www.css3.com/)
 
