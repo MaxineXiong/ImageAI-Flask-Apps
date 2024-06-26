@@ -61,6 +61,7 @@ ImageAI-Flask-Apps/
 │   │   └── README.md
 ├── files_for_testing/
 ├── requirements.txt
+├── .gitignore
 ├── README.md
 └── LICENSE
 ```
@@ -85,6 +86,7 @@ The description of each file and folder in the repository is as follows:
     
 - **files_for_testing/**: This folder contains a collection of test images and videos that can be used for app testing and experimentation.
 - **requirements.txt**: This file lists the necessary dependencies and packages required to run the Flask apps. It provides a convenient way to install all the dependencies.
+- **.gitignore**: Specifies which files and directories Git should ignore, helping to keep the repository clean from unnecessary or sensitive files.
 - **README.md**: The README file for the project. It provides an overview of the project, installation instructions, usage guidelines, and other relevant information.
 - **LICENSE**: The license file for the project, which specifies the terms and conditions under which the code and resources are shared.
 
