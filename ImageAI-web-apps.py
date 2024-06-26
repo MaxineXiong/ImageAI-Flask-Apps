@@ -145,7 +145,7 @@ def detect_objects_in_video():
             object_detector.plot_summaries()
 
             # Generate a GIF image of the output video
-            output_vido_clip = VideoFileClip(
+            output_video_clip = VideoFileClip(
                 os.path.join(
                     videos_path,
                     input_video_name.split(".")[0]
@@ -153,7 +153,7 @@ def detect_objects_in_video():
                     + input_video_name.split(".")[-1],
                 )
             )
-            output_vido_clip.write_gif(
+            output_video_clip.write_gif(
                 os.path.join(
                     videos_path,
                     input_video_name.split(".")[0] + "_detected.gif",
